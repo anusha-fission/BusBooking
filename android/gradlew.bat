@@ -38,9 +38,11 @@ set DEFAULT_JVM_OPTS="-Xmx64m" "-Xms64m"
 @rem Find java.exe
 if defined JAVA_HOME goto findJavaFromJavaHome
 
-set JAVA_EXE=java.exe
-%JAVA_EXE% -version >NUL 2>&1
-if "%ERRORLEVEL%" == "0" goto execute
+@REM set JAVA_EXE=java.exe
+@REM %JAVA_EXE% -version >NUL 2>&1
+@REM if "%ERRORLEVEL%" == "0" goto execute
+
+set java_exe= C:\Program Files\Java\jdk1.8.0_211\bin\java.exe
 
 echo.
 echo ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.

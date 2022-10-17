@@ -4,19 +4,17 @@ import SelectList from 'react-native-dropdown-select-list';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 export default function HomeScreen(props) {
-   const [category, setCategory] = useState('');
-   const [subcategory, setSubCategory] = useState('');
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [checkAvailablity, setCheckAvailablity] = useState({
     source: '',
     destination: '',
-    date:''
-  })
+    date: '',
+  });
 
-  useEffect(()=>{
-    props.route.params.setAvailablity(checkAvailablity)
-  },[checkAvailablity])
-  console.log('home', checkAvailablity);
+  useEffect(() => {
+    props.route.params.setAvailablity(checkAvailablity);
+  }, [checkAvailablity]);
+
   const showDatePicker = () => {
     setDatePickerVisibility(true);
   };
@@ -26,13 +24,10 @@ export default function HomeScreen(props) {
   };
 
   const handleConfirm = date => {
-    console.log('a date has been picked:', date);
-
-    setCheckAvailablity({...checkAvailablity, date:date}),
-    props.route.params.setAvailablity(checkAvailablity)
+    setCheckAvailablity({...checkAvailablity, date: date}),
+      props.route.params.setAvailablity(checkAvailablity);
     hideDatePicker();
   };
-
 
   const categories = [
     {key: 1, value: 'Kolkata'},
@@ -56,15 +51,26 @@ export default function HomeScreen(props) {
     <>
       <View style={{paddingHorizontal: 30, paddingTop: 60}}>
         <SelectList
-          setSelected={(data)=>setCheckAvailablity({...checkAvailablity, source: categories.find(x=>x.key===data)?.value})}
+          setSelected={data =>
+            setCheckAvailablity({
+              ...checkAvailablity,
+              source: categories.find(x => x.key === data)?.value,
+            })
+          }
+          boxStyles={{borderColor: 'red'}}
           data={categories}
-           placeholder={"To"}
+          placeholder={'To'}
           defaultOption={{key: '1', value: 'from'}}
         />
 
         <SelectList
-         setSelected={(data)=>setCheckAvailablity({...checkAvailablity, destination: subcategories.find(x=>x.key===data)?.value})}
-          boxStyles={{marginTop: 30}}
+          setSelected={data =>
+            setCheckAvailablity({
+              ...checkAvailablity,
+              destination: subcategories.find(x => x.key === data)?.value,
+            })
+          }
+          boxStyles={{marginTop: 30, borderColor: 'red'}}
           data={subcategories}
           placeholder={'Select categories'}
           defaultOption={{key: '1', value: 'To'}}
@@ -80,13 +86,10 @@ export default function HomeScreen(props) {
           onCancel={hideDatePicker}
         />
       </View>
-
-      <View style={{paddingTop: 60, paddingHorizontal: 30}}>
+      <View style={{marginTop: 60, paddingHorizontal: 80}}>
         <Button
           onPress={() => props.navigation.navigate('AvailableBus')}
-          title="Search">
-          Search
-        </Button>
+          title="Search"></Button>
       </View>
     </>
   );
@@ -94,9 +97,9 @@ export default function HomeScreen(props) {
 
 const styles = StyleSheet.create({
   mainView: {
-    flex: 1,
     alignItems: 'center',
     justifycontent: 'center',
-    marginTop: 50,
+    marginTop: 30,
+    borderRadius: 40,
   },
 });

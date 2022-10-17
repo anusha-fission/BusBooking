@@ -15,7 +15,7 @@ export default function LoginScreen({navigation}) {
   return (
     
     <View style={styles.container}>
-      {/* <Image style={styles.image} source= {require('../../Images/guitor.png')} /> */}
+      <Image style={styles.image} source= {{uri: 'https://microsites-websitebuilder.s3.amazonaws.com/images/rishabhbus.com_popup_1592910268.jpg'}} />
  
      
       <View style={styles.inputView}>
@@ -47,7 +47,7 @@ export default function LoginScreen({navigation}) {
         <Text style={styles.loginText}>LOGIN</Text>
       </TouchableOpacity> 
       <View>
-      <TouchableOpacity
+      <TouchableOpacity 
        style={styles.registrationBtn}
        onPress={() => navigation.navigate('Registration')}>
         <Text style={styles.loginText}>Register</Text>
@@ -69,8 +69,9 @@ const styles = StyleSheet.create({
  
   image: {
     marginBottom: 40,
-    width:150,
-    height:120
+    width:290,
+    height:260,
+    marginTop:-40
   },
  
   inputView: {
@@ -115,12 +116,11 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     height: 50,
     alignItems: "center",
-    // justifyContent: "center",
     marginTop: -50,
     backgroundColor: "#FF1493",
     paddingHorizontal:50,
-    // marginBottom: 80,
-    marginLeft:190
+    marginLeft:190,
+   
     
   }
 });

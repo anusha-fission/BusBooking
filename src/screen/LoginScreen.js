@@ -6,11 +6,21 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
+  Alert,
 } from "react-native";
  
 export default function LoginScreen({navigation}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+
+  const Submit = () => {
+    if (email === 'vikash@gmail.com' && password === 'yadav') {
+      navigation.navigate('Home')
+    }else {
+      Alert.alert('Email and password not found');
+    }
+  };
  
   return (
     
@@ -43,7 +53,7 @@ export default function LoginScreen({navigation}) {
  
       <TouchableOpacity
        style={styles.loginBtn}
-       onPress={() => navigation.navigate('Home')}>
+       onPress={() =>{Submit(); }}>
         <Text style={styles.loginText}>LOGIN</Text>
       </TouchableOpacity> 
       <View>
